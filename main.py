@@ -1,32 +1,51 @@
 from cryptography.fernet import Fernet
+import time
 
 def encrypt_file(key_path):
-    with open(key_path, 'r') as file:
-        key = file.read()
-    fernet = Fernet(key)
+    try:
+        with open(key_path, 'r') as file:
+            key = file.read()
+        fernet = Fernet(key)
+    except:
+        print("Key file not found, please create one first.")
+        time.sleep(10)
+        return 0
 
     file_path = input("Input path to the file you want to encrypt: \n")
+    try:
+        with open(file_path, 'rb') as file:
+            original = file.read()
+        encrypted = fernet.encrypt(original)
+        with open(file_path, 'wb') as encrypted_file:
+            encrypted_file.write(encrypted)
+    except:
+        print("File not found, please check the path.")
+        time.sleep(10)
+        return 0
 
-    with open(file_path, 'rb') as file:
-        original = file.read()
-    encrypted = fernet.encrypt(original)
-
-    with open(file_path, 'wb') as encrypted_file:
-        encrypted_file.write(encrypted)
 
 def decrypt_file(key_path):
-    with open(key_path, 'r') as file:
-        key = file.read()
-    fernet = Fernet(key)
+    try:
+        with open(key_path, 'r') as file:
+            key = file.read()
+        fernet = Fernet(key)
+    except:
+        print("Key file not found, please create one first.")
+        time.sleep(10)
+        return 0
 
     file_path = input("Input path to the file you want to decrypt: \n")
+    try:
+        with open(file_path, 'rb') as file:
+            encrypted = file.read()
+        decrypted = fernet.decrypt(encrypted)
 
-    with open(file_path, 'rb') as file:
-        encrypted = file.read()
-    decrypted = fernet.decrypt(encrypted)
-
-    with open(file_path, 'wb') as decrypted_file:
-        decrypted_file.write(decrypted)
+        with open(file_path, 'wb') as decrypted_file:
+            decrypted_file.write(decrypted)
+    except:
+        print("File not found, please check the path.")
+        time.sleep(10)
+        return 0
 
 if __name__ == '__main__':
     choice = input("Do you want to encrypt or decrypt? (e/d)")
