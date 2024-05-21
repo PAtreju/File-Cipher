@@ -70,3 +70,5 @@ The executable will be created in the `dist` directory.
 - The application does not handle errors related to the absence or incorrect format of the `credentials.json` file for the Google Drive API, but will continue to run.
 - The application does not handle errors related to the absence of the selected file or key file, but will continue to run.
 - Remember to encrypt files before uploading them to Google Drive.
+
+wykres granta - https://b24-sjwa3a.bitrix24.pl/?secret=evy34axh 
