@@ -48,18 +48,4 @@ class CipherFile:
         with open('filekey.key', 'wb') as file:
             file.write(key)
 
-# if __name__ == '__main__':
-#     choice = input("Do you want to encrypt or decrypt? (e/d)")
-#     if choice == 'e':
-#         if_key = input("Input path to the key file: (if none exists press enter) \n")
-#         if if_key != '':
-#             encrypt_file(if_key)
-#         else:
-#             key = Fernet.generate_key()
-#             with open('filekey.key', 'wb ') as file:
-#                 file.write(key)
-#             encrypt_file('filekey.key')
-#     elif choice == 'd':
-#         if_key = input("Input path to the key file: (if none exists press enter) \n")
-#         if if_key != '':
-#             decrypt_file(if_key)
+

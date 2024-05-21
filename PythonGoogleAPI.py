@@ -47,7 +47,3 @@ def main(path):
     file = None
 
   return file.get("id")
-
-
-if __name__ == "__main__":
-  main()
